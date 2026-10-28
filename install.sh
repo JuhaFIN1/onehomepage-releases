@@ -78,7 +78,7 @@ openssl pkeyutl -verify -pubin -inkey /root/release_pub.pem -rawin -in "$STAGE/c
 
 # the update helper and the configuration come from the (now verified) assets archive
 TMP=$(mktemp -d)
-tar -xzf "$STAGE/onehomepage-$VER-assets.tar.gz" -C "$TMP"
+tar --no-same-owner -xzf "$STAGE/onehomepage-$VER-assets.tar.gz" -C "$TMP"
 A="$TMP/onehomepage-assets"
 bash "$A/deploy/install-updater.sh"
 mkdir -p /opt/onehomepage/deploy && cp -r "$A/deploy/." /opt/onehomepage/deploy/
