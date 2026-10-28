@@ -144,6 +144,7 @@ echo "   pct exec $CTID -- cat /opt/onehomepage/var/setup_code.txt"
 echo " The first person to sign in with that code becomes the owner."
 echo
 echo " REQUIRED: a free BluexDEV account and a licence key (the first 7 days work without them)."
+echo "   Start here, all steps in order: https://auth.selaa.fi/start/onehomepage"
 echo "   1. Create your account and confirm your email:"
 echo "      https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage"
 echo "   2. In One Homepage open Settings -> Link to account, then approve the code at:"

@@ -90,12 +90,16 @@ the latest signed release into it and starts the service.
 > **A free BluexDEV account (auth.selaa.fi) and a licence key are required.** The first 7 days of a new installation work
 > without them; after that One Homepage stays locked until you link a licence. The steps below get you both, in this order.
 
+**Start here: [auth.selaa.fi/start/onehomepage](https://auth.selaa.fi/start/onehomepage)**. A public page that walks you through the steps below in this
+order: account, licence key, install, link.
+
 ### Step by step
 
 1. **Create your free account.** [Create a BluexDEV account](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage): email, username and password. **Confirm your email**
    when the message arrives, then sign in.
-2. **Get your install command.** [Sign in](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) and open **Install** (Asenna) in your account. It shows the install
-   command for One Homepage with a copy button.
+2. **Get your install command and licence key.** [Sign in](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) and open **Install** (Asenna) in your account. It shows the install
+   command for One Homepage with a copy button, and **your free licence key is created for you the moment you open it**. It
+   also shows under **Your licence** on your account page.
 3. **Run it in the Proxmox shell** as root. When it is done it prints the address of your new page and how to read the
    setup code:
 
@@ -104,9 +108,9 @@ the latest signed release into it and starts the service.
    ```
 
    The first person who signs in with that code becomes the owner. Others are invited as editor or viewer.
-4. **Link the installation to your account. This is where your licence key is created.** In One Homepage open
-   **Settings → Link to account**. It shows a code like `ABCD-EFGH`. Open [auth.selaa.fi/device](https://auth.selaa.fi/device) (Settings shows the link) and enter the code, sign in, check the machine name and press **Approve**. Your free licence key is
-   created for you and appears under **Your licence** in your account. The page updates by itself.
+4. **Link the installation to your account.** This attaches your licence to the installation. In One Homepage open
+   **Settings → Link to account**. It shows a code like `ABCD-EFGH`. Open [auth.selaa.fi/device](https://auth.selaa.fi/device) (Settings shows the link) and enter the code, sign in, check the machine name and press **Approve**. The page in Settings
+   updates by itself. If you skipped step 2, the licence key is created here at the latest.
 
 Reserve the container's address in your router so that it does not change. **Updates** are in Settings → Updates: every release
 carries `checksums.txt` and a signature, and the program verifies both before it installs anything.
@@ -137,9 +141,10 @@ sign in with your BluexDEV account.
 
 | | |
 |---|---|
+| **Start page** | [auth.selaa.fi/start/onehomepage](https://auth.selaa.fi/start/onehomepage): all the steps in order, with the buttons. |
 | **Create an account** | [auth.selaa.fi, create account](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage). Confirm your email. |
 | **Sign in** | [auth.selaa.fi, sign in](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) |
-| **Get the licence key** | Link your installation: **Settings → Link to account** in One Homepage, then approve at [auth.selaa.fi/device](https://auth.selaa.fi/device). The key is created for you and shown under **Your licence** in your account. |
+| **Get the licence key** | Created for you when you open **Install** in your account (step 2), and at the latest when you link the installation (step 4). It is shown under **Your licence** in your account. |
 | **Without a licence** | The first 7 days work without one. After that One Homepage is locked until you link a licence. |
 
 > **Licence keys are free for the time being.** BluexDEV may change the terms, limit the free licence or make the program or
@@ -186,16 +191,16 @@ sää), Ctrl K -haku (jos ei osumia, Enter hakee verkosta), puhelinnäkymä ja P
 sivupalkissa, suomi ja englanti, tuonti Homerista, Homepagesta ja Dashystä sekä Telegram-hälytykset.
 
 **Asennus (tarvitset Proxmox VE -palvelimen).** Ilmainen **BluexDEV-tili** (auth.selaa.fi) ja **lisenssiavain** ovat pakollisia.
-Uuden asennuksen ensimmäiset 7 päivää toimivat ilman, sen jälkeen One Homepage lukittuu kunnes liität lisenssin. Tee näin tässä järjestyksessä:
+Uuden asennuksen ensimmäiset 7 päivää toimivat ilman, sen jälkeen One Homepage lukittuu kunnes liität lisenssin. Aloita täältä: **[auth.selaa.fi/start/onehomepage](https://auth.selaa.fi/start/onehomepage)**, jossa vaiheet ovat samassa järjestyksessä. Tee näin:
 
 1. **Luo ilmainen tili:** [luo BluexDEV-tili](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage) (sähköposti, käyttäjänimi, salasana) ja **vahvista sähköpostisi**.
-2. **Hae asennuskomento:** [kirjaudu sisään](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) ja avaa tililläsi **Asenna**. Siellä on One Homepagen asennuskomento ja kopioi-nappi.
+2. **Hae asennuskomento ja lisenssiavain:** [kirjaudu sisään](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) ja avaa tililläsi **Asenna**. Siellä on One Homepagen asennuskomento ja kopioi-nappi, ja **ilmainen lisenssiavaimesi luodaan puolestasi heti kun avaat sivun**. Se näkyy myös tilisi kohdassa **Lisenssisi**.
 3. **Aja komento Proxmoxin shellissä** rootina. Asennin luo pienen **Debian 13** -kontin, lataa siihen viimeisimmän allekirjoitetun
    julkaisun ja kertoo osoitteen. Asetuskoodi: `pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt`. Ensimmäinen koodilla
    kirjautuva on omistaja.
-4. **Liitä asennus tiliisi, jolloin lisenssiavain luodaan:** avaa One Homepagessa **Asetukset → Liitä tiliin**. Näytetään koodi
-   (esim. `ABCD-EFGH`). Avaa [auth.selaa.fi/device](https://auth.selaa.fi/device), kirjaudu, tarkista koneen nimi ja paina **Hyväksy**. Ilmainen
-   lisenssiavaimesi luodaan puolestasi ja näkyy tililläsi kohdassa **Lisenssisi**.
+4. **Liitä asennus tiliisi.** Liittäminen kiinnittää lisenssin tähän asennukseen. Avaa One Homepagessa **Asetukset → Liitä tiliin**. Näytetään koodi
+   (esim. `ABCD-EFGH`). Avaa [auth.selaa.fi/device](https://auth.selaa.fi/device), kirjaudu, tarkista koneen nimi ja paina **Hyväksy**. Jos
+   ohitit vaiheen 2, lisenssiavain luodaan viimeistään tässä.
 
 Jos asennat suoraan tämän repon komennolla (`bash -c "$(curl -fsSL https://raw.githubusercontent.com/JuhaFIN1/onehomepage-releases/main/install.sh)"`), muista, että **tili ja lisenssiavain ovat pakollisia**:
 tee vaiheet 1, 2 ja 4 heti, ettei sivu lukitu 7 päivän jälkeen. Päivitykset: Asetukset → Päivitykset (allekirjoitus ja tarkistussumma
