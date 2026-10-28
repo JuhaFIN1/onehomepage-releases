@@ -41,7 +41,9 @@ set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
 REPO="$1"; CHANNEL="$2"
 apt-get update -qq
-apt-get install -y -qq ca-certificates curl tzdata openssl >/dev/null
+apt-get install -y -qq ca-certificates curl tzdata openssl unattended-upgrades >/dev/null
+# Debian security updates install themselves (the helper in Settings can also run a full update and cleanup)
+printf 'APT::Periodic::Update-Package-Lists "1";\nAPT::Periodic::Unattended-Upgrade "1";\n' > /etc/apt/apt.conf.d/20auto-upgrades
 ln -sf /usr/share/zoneinfo/Europe/Helsinki /etc/localtime
 
 # the publisher's public key: every release is checked against it
