@@ -84,41 +84,63 @@ cloud needed to show the page. About 8 MB of RAM, one command to install, signed
 
 ## 📥 Install / Asennus
 
-You need a **Proxmox VE** host. The installer creates a small **Debian 13** container (1 core, 256 MB RAM, 2 GB disk),
-downloads the latest signed release into it and starts the service. Run this as root in the **Proxmox shell**:
+You need a **Proxmox VE** host. The installer creates a small **Debian 13** container (1 core, 256 MB RAM, 2 GB disk), downloads
+the latest signed release into it and starts the service.
 
-```bash
-curl -fsSL https://auth.selaa.fi/install/onehomepage | bash
-```
+> **A free BluexDEV account (auth.selaa.fi) and a licence key are required.** The first 7 days of a new installation work
+> without them; after that One Homepage stays locked until you link a licence. The steps below get you both, in this order.
 
-Or straight from this repository:
+### Step by step
+
+1. **Create your free account.** [Create a BluexDEV account](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage): email, username and password. **Confirm your email**
+   when the message arrives, then sign in.
+2. **Get your install command.** [Sign in](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) and open **Install** (Asenna) in your account. It shows the install
+   command for One Homepage with a copy button.
+3. **Run it in the Proxmox shell** as root. When it is done it prints the address of your new page and how to read the
+   setup code:
+
+   ```bash
+   pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt
+   ```
+
+   The first person who signs in with that code becomes the owner. Others are invited as editor or viewer.
+4. **Link the installation to your account. This is where your licence key is created.** In One Homepage open
+   **Settings → Link to account**. It shows a code like `ABCD-EFGH`. Open [auth.selaa.fi/device](https://auth.selaa.fi/device) (Settings shows the link) and enter the code, sign in, check the machine name and press **Approve**. Your free licence key is
+   created for you and appears under **Your licence** in your account. The page updates by itself.
+
+Reserve the container's address in your router so that it does not change. **Updates** are in Settings → Updates: every release
+carries `checksums.txt` and a signature, and the program verifies both before it installs anything.
+
+### Installing straight from this repository
+
+If you already have an account, or you want to try it first, the same installer can be run directly in the Proxmox shell:
 
 ```bash
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/JuhaFIN1/onehomepage-releases/main/install.sh)"
 ```
 
+> **Remember: the account and the licence key are mandatory.** This command installs One Homepage and it works for 7 days, but
+> it does not give you an account or a licence. Do it now so that nothing locks later:
+> **[1. create your account](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage)** (and confirm your email), then **[2. sign in](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage)**, and in One Homepage use
+> **Settings → Link to account** and approve at **[auth.selaa.fi/device](https://auth.selaa.fi/device)**.
+
 If your Proxmox does not offer a Debian 13 template yet, the installer falls back to Debian 12 and tells you so. You can set
-`CTID`, `STORAGE`, `BRIDGE`, `CHANNEL=dev` and `DEBIAN` as environment variables to change the defaults. The installer runs on
-amd64 and arm64.
-
-When it is done it prints the address of your new page. **First sign-in:** the setup code is in the container:
-
-```bash
-pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt
-```
-
-The first person who signs in with that code becomes the owner. Others are invited with the role editor or viewer. Reserve the
-container's address in your router so that it does not change.
-
-**Updates** are in Settings → Updates. Every release carries `checksums.txt` and a signature (`checksums.txt.sig`); the
-program verifies both before it installs anything.
+`CTID`, `STORAGE`, `BRIDGE`, `CHANNEL=dev` and `DEBIAN` as environment variables to change the defaults. It runs on amd64
+and arm64.
 
 <a id="licence"></a>
 
 ## 🔑 Account and licence / Tili ja lisenssi
 
-One Homepage needs a free **BluexDEV account** ([auth.selaa.fi](https://auth.selaa.fi)) and a **licence key**. The first 7 days
-work without one. There is no password database in the program itself: you sign in with your BluexDEV account.
+One Homepage needs a free **BluexDEV account** and a **licence key**. There is no password database in the program itself: you
+sign in with your BluexDEV account.
+
+| | |
+|---|---|
+| **Create an account** | [auth.selaa.fi, create account](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage). Confirm your email. |
+| **Sign in** | [auth.selaa.fi, sign in](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) |
+| **Get the licence key** | Link your installation: **Settings → Link to account** in One Homepage, then approve at [auth.selaa.fi/device](https://auth.selaa.fi/device). The key is created for you and shown under **Your licence** in your account. |
+| **Without a licence** | The first 7 days work without one. After that One Homepage is locked until you link a licence. |
 
 > **Licence keys are free for the time being.** BluexDEV may change the terms, limit the free licence or make the program or
 > new versions paid in the future, and free access is not guaranteed. See [TERMS.md](TERMS.md).
@@ -163,19 +185,24 @@ kotiverkosta (yli 700 sovellusta ja laitetta, vain lukevat kyselyt), Home Assist
 sää), Ctrl K -haku (jos ei osumia, Enter hakee verkosta), puhelinnäkymä ja PWA, kolme teemaa, widgetit ylhäällä tai
 sivupalkissa, suomi ja englanti, tuonti Homerista, Homepagesta ja Dashystä sekä Telegram-hälytykset.
 
-**Asennus:** tarvitset Proxmox VE -palvelimen. Aja Proxmoxin shellissä rootina:
+**Asennus (tarvitset Proxmox VE -palvelimen).** Ilmainen **BluexDEV-tili** (auth.selaa.fi) ja **lisenssiavain** ovat pakollisia.
+Uuden asennuksen ensimmäiset 7 päivää toimivat ilman, sen jälkeen One Homepage lukittuu kunnes liität lisenssin. Tee näin tässä järjestyksessä:
 
-```bash
-curl -fsSL https://auth.selaa.fi/install/onehomepage | bash
-```
+1. **Luo ilmainen tili:** [luo BluexDEV-tili](https://auth.selaa.fi/bluex-portal-2026-login/create-account?app=onehomepage) (sähköposti, käyttäjänimi, salasana) ja **vahvista sähköpostisi**.
+2. **Hae asennuskomento:** [kirjaudu sisään](https://auth.selaa.fi/bluex-portal-2026-login?app=onehomepage) ja avaa tililläsi **Asenna**. Siellä on One Homepagen asennuskomento ja kopioi-nappi.
+3. **Aja komento Proxmoxin shellissä** rootina. Asennin luo pienen **Debian 13** -kontin, lataa siihen viimeisimmän allekirjoitetun
+   julkaisun ja kertoo osoitteen. Asetuskoodi: `pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt`. Ensimmäinen koodilla
+   kirjautuva on omistaja.
+4. **Liitä asennus tiliisi, jolloin lisenssiavain luodaan:** avaa One Homepagessa **Asetukset → Liitä tiliin**. Näytetään koodi
+   (esim. `ABCD-EFGH`). Avaa [auth.selaa.fi/device](https://auth.selaa.fi/device), kirjaudu, tarkista koneen nimi ja paina **Hyväksy**. Ilmainen
+   lisenssiavaimesi luodaan puolestasi ja näkyy tililläsi kohdassa **Lisenssisi**.
 
-Asennin luo pienen **Debian 13** -kontin, lataa siihen viimeisimmän allekirjoitetun julkaisun ja käynnistää palvelun. Asetuskoodi
-ensimmäiseen kirjautumiseen: `pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt`. Ensimmäinen koodilla kirjautuva on
-omistaja. Päivitykset: Asetukset → Päivitykset (allekirjoitus ja tarkistussumma tarkistetaan ennen asennusta).
+Jos asennat suoraan tämän repon komennolla (`bash -c "$(curl -fsSL https://raw.githubusercontent.com/JuhaFIN1/onehomepage-releases/main/install.sh)"`), muista, että **tili ja lisenssiavain ovat pakollisia**:
+tee vaiheet 1, 2 ja 4 heti, ettei sivu lukitu 7 päivän jälkeen. Päivitykset: Asetukset → Päivitykset (allekirjoitus ja tarkistussumma
+tarkistetaan ennen asennusta).
 
-**Tili ja lisenssi:** käyttö vaatii ilmaisen **BluexDEV-tilin** (auth.selaa.fi) ja **lisenssiavaimen**. Ensimmäiset 7 päivää
-toimivat ilman. **Avaimet ovat toistaiseksi ilmaisia**, mutta BluexDEV voi jatkossa muuttaa ehtoja, rajoittaa ilmaista lisenssiä tai
-tehdä ohjelmasta maksullisen, eikä ilmaisuutta taata ([TERMS.md](TERMS.md)).
+**Lisenssiavaimet ovat toistaiseksi ilmaisia**, mutta BluexDEV voi jatkossa muuttaa ehtoja, rajoittaa ilmaista lisenssiä tai tehdä
+ohjelmasta maksullisen, eikä ilmaisuutta taata ([TERMS.md](TERMS.md)).
 
 **Komentotiilet Windowsissa:** Asetuksista ladattava pieni apuri (PowerShell, asennus kerran, vain omalle käyttäjällesi) avaa
 konsolin valittuun kansioon. Ennen ajoa Windows näyttää kansion, kuoren ja komennon ja kysyy vahvistuksen.
