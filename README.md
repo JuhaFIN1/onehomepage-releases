@@ -1,50 +1,180 @@
-<p align="center"><img src="logo.png" alt="One Homepage" width="120"></p>
+<div align="center">
 
-# One Homepage – downloads
+<img src="logo.png" alt="One Homepage" width="112">
 
-**A start page for your home network, in one small program.**
-Links to all your services with live status, devices found on your network, optional widgets (electricity prices, weather,
-Home Assistant, Proxmox, Pi-hole, Jellyfin, Docker). Runs on your own server or Proxmox container, about 8 MB of RAM.
+# One Homepage
 
-**Kotiverkon aloitussivu yhdessä pienessä ohjelmassa.**
-Linkit kaikkiin palveluihisi tilatietoineen, verkosta löytyvät laitteet ja valinnaiset widgetit (pörssisähkö, sää,
-Home Assistant, Proxmox, Pi-hole, Jellyfin, Docker). Toimii omalla palvelimellasi tai Proxmox-kontissa, noin 8 MB RAM.
+**The start page for your home network. One small program, one Proxmox container, about 8 MB of RAM.**<br>
+**Kotiverkon aloitussivu. Yksi pieni ohjelma, yksi Proxmox-kontti, noin 8 MB RAM.**
 
-## Download / Lataa
+[![Latest release](https://img.shields.io/github/v/release/JuhaFIN1/onehomepage-releases?label=release&color=f5a524)](../../releases/latest)
+![Debian 13](https://img.shields.io/badge/Debian-13-a81d33)
+![Proxmox LXC](https://img.shields.io/badge/Proxmox-LXC-e57000)
+![amd64 and arm64](https://img.shields.io/badge/amd64%20%7C%20arm64-lightgrey)
 
-> **Coming soon / Tulossa.** The first public release has not been published yet.
-> Ensimmäistä julkista versiota ei ole vielä julkaistu.
+[**Install**](#install--asennus) · [**Features**](#features) · [**Screenshots**](#screenshots) · [**Licence**](#account-and-licence--tili-ja-lisenssi) · [**Suomeksi**](#suomeksi) · [**Terms**](TERMS.md)
 
-Releases will appear at **[Releases → latest](../../releases/latest)**. Every release lists a SHA-256 checksum for each file
-(`checksums.txt`), and the program verifies its updates before installing them.
+<br>
 
-## Account and demo licence / Tili ja demolisenssi
+<img src="screenshots/home-sidebar.jpg" alt="One Homepage, Simple mode with the widgets in the right sidebar" width="860">
 
-Signing in uses a free **BluexDEV account** (auth.selaa.fi). Registering gives you a **demo licence**, which is **free for the
-time being**. BluexDEV may change the licence terms, limit the demo or make it paid in the future (see [TERMS.md](TERMS.md)).
-There is no password database in the program itself.
+<sub>Sample data. Simple mode with the clock, weather and electricity price in the right sidebar.</sub>
 
-Kirjautuminen käyttää ilmaista **BluexDEV-tiliä** (auth.selaa.fi). Rekisteröityminen antaa **demolisenssin**, joka on
-**toistaiseksi ilmainen**. BluexDEV voi jatkossa muuttaa ehtoja, rajoittaa demoa tai tehdä siitä maksullisen
-([TERMS.md](TERMS.md)). Ohjelmalla ei ole omaa salasanatietokantaa.
+</div>
+
+<br>
+
+## What it is
+
+One Homepage is a fast, calm start page for everything you run at home: all your services as tiles with live status, the
+devices it finds on your network, your lights and sensors from Home Assistant, and a numbered launcher for the projects you
+open every day. It has a **Simple** mode that shows only what you need, and an **Advanced** mode with live widgets. Both use
+the same data.
+
+It is a single Go program with the interface built in. No database, no containers inside the container, no cloud dependency
+for the page itself.
+
+## Features
+
+| | |
+|---|---|
+| **Tiles with live status** | Every service gets a tile with a logo and a status light, response time and history. Group them, colour them, give groups icons, and drag them around. |
+| **Three tile sizes** | Normal tiles, **2 per slot** or **4 per slot**: a row of lights or sensors takes the space of a single normal tile. |
+| **Up to 10 pages** | Tabs above the content. Put your daily links on the first page and everything else on its own page. |
+| **Find on your home network** | One click scans your private network (read-only, no logins) and recognises more than 700 apps and devices. You pick what becomes a tile. |
+| **Home Assistant** | Lights, switches, sensors, climate, cameras and media players as live tiles you can tap. Locks and alarms are read-only on purpose. |
+| **Launcher lists** | A numbered list of projects or commands. Open one, or tick several and open them together, in cmd, PowerShell or Windows Terminal. |
+| **Command tiles** | A tile that opens a console in a folder and runs a command on your own PC, after a confirmation. |
+| **Widgets** | Service status, 30 day availability, Proxmox, Pi-hole, Jellyfin, Docker (read-only), tasks, spot electricity price and weather. |
+| **Search** | Press **Ctrl K**: find a tile, run a command, open row number 7 of a launcher. If nothing matches, Enter searches the web. |
+| **Phone and PWA** | A bottom navigation bar, safe areas for iPhone and an installable app icon. |
+| **Your layout, your look** | Three themes, three densities, widgets on top or in a left or right sidebar, Finnish and English. |
+| **Import and backup** | Bring over a layout from Homer, Homepage or Dashy. Export and restore a backup. No secrets are included. |
+| **Alerts** | Optional Telegram messages when a service or device goes down or comes back. |
+| **Safe updates** | Updates come from this repository, are checked against an Ed25519 signature and a checksum, and roll back automatically if the new version does not start. |
+
+## Screenshots
+
+<table>
+<tr>
+<td width="50%"><img src="screenshots/home-top.jpg" alt="Home page with tabs and widgets on top"><br><sub><b>Widgets on top.</b> Clock, weather and electricity above your pages.</sub></td>
+<td width="50%"><img src="screenshots/tile-sizes.jpg" alt="Tiles in three sizes"><br><sub><b>Three tile sizes.</b> Normal, 2 per slot and 4 per slot in the same page.</sub></td>
+</tr>
+<tr>
+<td width="50%"><img src="screenshots/launcher.jpg" alt="Numbered launcher list"><br><sub><b>Launcher list.</b> Numbered rows, Claude model badge, PowerShell or Windows Terminal tags.</sub></td>
+<td width="50%"><img src="screenshots/advanced.jpg" alt="Advanced mode with live widgets"><br><sub><b>Advanced mode.</b> Service status, Proxmox, Pi-hole and more.</sub></td>
+</tr>
+</table>
+
+<div align="center">
+<img src="screenshots/mobile.png" alt="One Homepage on a phone" width="300"><br>
+<sub>On a phone. All screenshots use sample data.</sub>
+</div>
+
+## Install / Asennus
+
+You need a **Proxmox VE** host. The installer creates a small **Debian 13** container (1 core, 256 MB RAM, 2 GB disk),
+downloads the latest signed release into it and starts the service. Run this as root in the **Proxmox shell**:
+
+```bash
+curl -fsSL https://auth.selaa.fi/install/onehomepage | bash
+```
+
+Or straight from this repository:
+
+```bash
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/JuhaFIN1/onehomepage-releases/main/install.sh)"
+```
+
+If your Proxmox does not offer a Debian 13 template yet, the installer falls back to Debian 12 and tells you so. You can set
+`CTID`, `STORAGE`, `BRIDGE`, `CHANNEL=dev` and `DEBIAN` as environment variables to change the defaults. The installer runs on
+amd64 and arm64.
+
+When it is done it prints the address of your new page. **First sign-in:** the setup code is in the container:
+
+```bash
+pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt
+```
+
+The first person who signs in with that code becomes the owner. Others are invited with the role editor or viewer. Reserve the
+container's address in your router so that it does not change.
+
+**Updates** are in Settings → Updates. Every release carries `checksums.txt` and a signature (`checksums.txt.sig`); the
+program verifies both before it installs anything.
+
+## Account and licence / Tili ja lisenssi
+
+One Homepage needs a free **BluexDEV account** ([auth.selaa.fi](https://auth.selaa.fi)) and a **licence key**. The first 7 days
+work without one. There is no password database in the program itself: you sign in with your BluexDEV account.
+
+> **Licence keys are free for the time being.** BluexDEV may change the terms, limit the free licence or make the program or
+> new versions paid in the future, and free access is not guaranteed. See [TERMS.md](TERMS.md).
+
+## Command tiles on Windows
+
+A browser cannot start programs by itself. For command tiles and launcher lists, Settings has a small **Windows helper**
+(a PowerShell script, installed once, for your Windows user only). It registers an address that opens a console in the folder
+you chose. Before anything runs, a window shows the folder, the shell and the command and asks for confirmation. You can
+choose to remember a command; if the command changes, you are asked again. Remove the helper any time by running the script
+again with `-Uninstall`.
 
 ## Privacy / Yksityisyys
 
 The program and your data stay on your own server. Optional features contact only what you switch on (for example weather from
-Open-Meteo, content from selaa.fi, Telegram alerts, your own Home Assistant). Network scanning is limited to private addresses
-and read-only queries. Sign-in and the licence check go to auth.selaa.fi.
+[Open-Meteo](https://open-meteo.com/), electricity price and incident content from selaa.fi, Telegram alerts, your own Home
+Assistant). Network scanning is limited to private addresses and read-only queries. Sign-in and the licence check go to
+auth.selaa.fi, and updates come from this repository. Tokens and passwords you enter stay on your server.
 
-Ohjelma ja tietosi pysyvät omalla palvelimellasi. Valinnaiset ominaisuudet ottavat yhteyden vain siihen, minkä kytket päälle
-(esimerkiksi sää Open-Meteosta, sisältö selaa.fi:stä, Telegram-hälytykset, oma Home Assistant). Verkkohaku rajoittuu
-yksityisiin osoitteisiin ja vain lukeviin kyselyihin. Kirjautuminen ja lisenssin tarkistus menevät auth.selaa.fi:hin.
+## Questions
+
+**Does it work without internet?** Yes, once installed. Sign-in uses a signed local session that survives an outage of
+auth.selaa.fi, and the licence check has a 30 day offline grace period.
+**Can I run it outside Proxmox?** The installer is made for Proxmox containers. The release files are plain Linux binaries
+(amd64 and arm64), but only the Proxmox install is supported for now.
+**Is my data sent to BluexDEV?** No. See Privacy above.
+**Something is wrong:** open an [issue](../../issues).
+
+---
+
+## Suomeksi
+
+**One Homepage on kotiverkkosi aloitussivu.** Kaikki palvelusi tiileinä ja tilavaloineen, verkosta löytyvät laitteet, Home
+Assistantin valot ja anturit sekä numeroitu käynnistinlista päivittäisille projekteille. **Simple**-tila näyttää vain tarpeellisen,
+**Advanced**-tila lisää live-widgetit. Sama data kummassakin. Yksi Go-ohjelma, ei tietokantaa, noin 8 MB RAM.
+
+**Ominaisuudet:** tiilet tilatiedoin, kolme tiilikokoa (normaali, 2 tai 4 per ruutu), enintään 10 sivua välilehtinä, haku
+kotiverkosta (yli 700 sovellusta ja laitetta, vain lukevat kyselyt), Home Assistant, käynnistinlistat ja komentotiilet
+(cmd, PowerShell tai Windows Terminal), widgetit (tila, saatavuus, Proxmox, Pi-hole, Jellyfin, Docker, tehtävät, pörssisähkö,
+sää), Ctrl K -haku (jos ei osumia, Enter hakee verkosta), puhelinnäkymä ja PWA, kolme teemaa, widgetit ylhäällä tai
+sivupalkissa, suomi ja englanti, tuonti Homerista, Homepagesta ja Dashystä sekä Telegram-hälytykset.
+
+**Asennus:** tarvitset Proxmox VE -palvelimen. Aja Proxmoxin shellissä rootina:
+
+```bash
+curl -fsSL https://auth.selaa.fi/install/onehomepage | bash
+```
+
+Asennin luo pienen **Debian 13** -kontin, lataa siihen viimeisimmän allekirjoitetun julkaisun ja käynnistää palvelun. Asetuskoodi
+ensimmäiseen kirjautumiseen: `pct exec <CTID> -- cat /opt/onehomepage/var/setup_code.txt`. Ensimmäinen koodilla kirjautuva on
+omistaja. Päivitykset: Asetukset → Päivitykset (allekirjoitus ja tarkistussumma tarkistetaan ennen asennusta).
+
+**Tili ja lisenssi:** käyttö vaatii ilmaisen **BluexDEV-tilin** (auth.selaa.fi) ja **lisenssiavaimen**. Ensimmäiset 7 päivää
+toimivat ilman. **Avaimet ovat toistaiseksi ilmaisia**, mutta BluexDEV voi jatkossa muuttaa ehtoja, rajoittaa ilmaista lisenssiä tai
+tehdä ohjelmasta maksullisen, eikä ilmaisuutta taata ([TERMS.md](TERMS.md)).
+
+**Komentotiilet Windowsissa:** Asetuksista ladattava pieni apuri (PowerShell, asennus kerran, vain omalle käyttäjällesi) avaa
+konsolin valittuun kansioon. Ennen ajoa Windows näyttää kansion, kuoren ja komennon ja kysyy vahvistuksen.
+
+**Yksityisyys:** ohjelma ja tietosi pysyvät omalla palvelimellasi. Valinnaiset ominaisuudet ottavat yhteyttä vain siihen, minkä
+kytket päälle. Verkkohaku rajoittuu yksityisiin osoitteisiin ja vain lukeviin kyselyihin.
 
 ## Terms / Käyttöehdot
 
-Free for the time being. You may not modify, copy or redistribute the program, use its code elsewhere, or present it as your own.
-Owner: **BluexDEV Software**. Full terms (English and Finnish): [TERMS.md](TERMS.md). Third-party components: [NOTICE.md](NOTICE.md).
+Owner: **BluexDEV Software**. You may not modify, copy or redistribute the program, use its code elsewhere, or present it as your
+own. Full terms (English and Finnish): [TERMS.md](TERMS.md). Third-party components and data sources: [NOTICE.md](NOTICE.md).
 
-## Support / Tuki
+Omistaja: **BluexDEV Software**. Et saa muokata, kopioida tai levittää ohjelmaa, käyttää sen koodia muualla tai esittää sitä
+omanasi. Täydet ehdot (englanti ja suomi): [TERMS.md](TERMS.md). Kolmannen osapuolen osat ja tietolähteet: [NOTICE.md](NOTICE.md).
 
-Open an [issue](../../issues).
-
-© 2026 BluexDEV Software. All rights reserved. Kaikki oikeudet pidätetään.
+<div align="center"><sub>© 2026 BluexDEV Software. All rights reserved. Kaikki oikeudet pidätetään.<br>
+Product names and logos shown in screenshots belong to their owners and identify those services only.</sub></div>

@@ -1,5 +1,5 @@
 ONE HOMEPAGE - TERMS OF USE / KÄYTTÖEHDOT
-Version 1, 2026-10-24
+Version 2, 2026-10-28 (changes from version 1: licence key and free keys, the optional Windows helper)
 
 Owner / Omistaja: BluexDEV Software ("BluexDEV")
 
@@ -14,8 +14,10 @@ ENGLISH
    any right to the source code.
 
 2. Account and demo licence
-   Using the Software requires a free BluexDEV account (auth.selaa.fi). Registering gives you
-   a demo licence. The demo licence is free for the time being. BluexDEV may at any time
+   Using the Software requires a free BluexDEV account (auth.selaa.fi) and a licence key. The
+   first 7 days of a new installation work without one. Registering gives you a demo licence
+   key. Licence keys are free for the time being: free access is not guaranteed, and the price
+   or the terms may change in the future. BluexDEV may at any time
    change the licence, limit or end the demo, or make the Software or new versions paid, and
    may change these terms. A version you have already downloaded may continue to be used under
    the terms it was released with, except that features that need BluexDEV's services
@@ -56,6 +58,10 @@ ENGLISH
    Assistant, Proxmox) and for sign-in, licence check and updates with BluexDEV's services
    (auth.selaa.fi) and the official download page. Tokens and passwords you enter are stored
    only on your server and are not sent to BluexDEV.
+   The optional Windows helper for command tiles and launcher lists runs only on your own
+   computer. It starts a console in a folder and runs a command only after you confirm the
+   folder, the shell and the command in a window it shows. You are responsible for the
+   commands you add. Nothing about them is sent to BluexDEV.
 
 7. No warranty
    The Software is provided "as is", without warranty of any kind. It can control devices
@@ -88,8 +94,10 @@ SUOMI
    sinulle oikeuksia lähdekoodiin.
 
 2. Tili ja demolisenssi
-   Ohjelman käyttö edellyttää ilmaista BluexDEV-tiliä (auth.selaa.fi). Rekisteröityminen
-   antaa demolisenssin. Demolisenssi on toistaiseksi ilmainen. BluexDEV voi milloin tahansa
+   Ohjelman käyttö edellyttää ilmaista BluexDEV-tiliä (auth.selaa.fi) ja lisenssiavainta.
+   Uuden asennuksen ensimmäiset 7 päivää toimivat ilman. Rekisteröityminen antaa
+   demolisenssiavaimen. Lisenssiavaimet ovat toistaiseksi ilmaisia: ilmaisuutta ei taata, ja
+   hinta tai ehdot voivat muuttua jatkossa. BluexDEV voi milloin tahansa
    muuttaa lisenssiä, rajoittaa tai lopettaa demon tai tehdä Ohjelmasta tai uusista versioista
    maksullisia sekä muuttaa näitä ehtoja. Jo lataamaasi versiota voi käyttää niillä ehdoilla,
    joilla se julkaistiin, paitsi että BluexDEVin palveluita tarvitsevat ominaisuudet
@@ -132,6 +140,10 @@ SUOMI
    ilmoitukset, Home Assistant, Proxmox) sekä kirjautumista, lisenssin tarkistusta ja päivityksiä
    varten BluexDEVin palveluihin (auth.selaa.fi) ja viralliselle lataussivulle. Antamasi
    tunnisteet ja salasanat tallennetaan vain palvelimellesi, eikä niitä lähetetä BluexDEVille.
+   Valinnainen Windows-apuri komentotiiliä ja käynnistinlistoja varten toimii vain omalla
+   tietokoneellasi. Se avaa konsolin kansioon ja ajaa komennon vasta, kun vahvistat kansion,
+   kuoren ja komennon sen näyttämässä ikkunassa. Vastaat itse lisäämistäsi komennoista.
+   Niistä ei lähetetä mitään BluexDEVille.
 
 7. Ei takuuta
    Ohjelma toimitetaan sellaisena kuin se on, ilman minkäänlaista takuuta. Se voi ohjata
