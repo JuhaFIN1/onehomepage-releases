@@ -158,6 +158,15 @@ you chose. Before anything runs, a window shows the folder, the shell and the co
 choose to remember a command; if the command changes, you are asked again. Remove the helper any time by running the script
 again with `-Uninstall`.
 
+**How to run it on Windows 11:** open **Terminal** (right-click Start), then:
+
+```powershell
+cd $HOME\Downloads
+powershell -ExecutionPolicy Bypass -File ./onehomepage-run-setup.ps1
+```
+
+(Or right-click the file, **Show more options**, **Run with PowerShell**.) No administrator rights are needed.
+
 ## 🔒 Privacy / Yksityisyys
 
 The program and your data stay on your own server. Optional features contact only what you switch on (for example weather from
