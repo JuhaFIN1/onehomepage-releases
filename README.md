@@ -46,7 +46,7 @@ cloud needed to show the page. About 8 MB of RAM, one command to install, signed
 | | |
 |---|---|
 | 🟢 **Tiles with live status** | Every service gets a tile with a logo and a status light, response time and history. Group them, colour them, give groups icons, and drag them around. |
-| 🧩 **Three tile sizes** | Normal tiles, **2 per slot** or **4 per slot**: a row of lights or sensors takes the space of a single normal tile. |
+| 🧩 **Three tile sizes** | Normal tiles, **2 per slot** or **4 per slot**: a row of lights or sensors takes the space of a single normal tile. Different small sizes share a slot (a half tile with two quarter tiles under it), and any tile can keep a slot to itself. |
 | 🗂️ **Up to 10 pages** | Tabs above the content. Put your daily links on the first page and everything else on its own page. |
 | 🔎 **Find on your home network** | One click scans your private network (read-only, no logins) and recognises more than 700 apps and devices. You pick what becomes a tile. |
 | 💡 **Home Assistant** | Lights, switches, sensors, climate, cameras and media players as live tiles you can tap. Locks and alarms are read-only on purpose. |
@@ -58,7 +58,7 @@ cloud needed to show the page. About 8 MB of RAM, one command to install, signed
 | 🎨 **Your layout, your look** | Three themes, three densities, widgets on top or in a left or right sidebar, Finnish and English. |
 | 📦 **Import and backup** | Bring over a layout from Homer, Homepage or Dashy. Export and restore a backup. No secrets are included. |
 | 🔔 **Alerts** | Optional Telegram messages when a service or device goes down or comes back. |
-| 🛡️ **Safe updates** | Updates come from this repository, are checked against an Ed25519 signature and a checksum, and roll back automatically if the new version does not start. |
+| 🛡️ **Safe updates** | Updates come from this repository, are checked against an Ed25519 signature and a checksum, and roll back automatically if the new version does not start. The update helper on the container refreshes itself with every update, and the **Update Debian packages and clean up** button (plus automatic security updates) keeps the container itself current. |
 
 <a id="screenshots"></a>
 
