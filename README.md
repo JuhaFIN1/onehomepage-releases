@@ -158,14 +158,10 @@ you chose. Before anything runs, a window shows the folder, the shell and the co
 choose to remember a command; if the command changes, you are asked again. Remove the helper any time by running the script
 again with `-Uninstall`.
 
-**How to run it on Windows 11:** open **Terminal** (right-click Start), then:
-
-```powershell
-cd $HOME\Downloads
-powershell -ExecutionPolicy Bypass -File ./onehomepage-run-setup.ps1
-```
-
-(Or right-click the file, **Show more options**, **Run with PowerShell**.) No administrator rights are needed.
+**How to run it on Windows 11:** double-click the downloaded `onehomepage-run-setup.cmd`, wherever your browser saved it. If
+Windows SmartScreen warns, choose **More info**, then **Run anyway**. It shows what it did when it finishes.
+Prefer PowerShell? Download the `.ps1` file instead, open Terminal in its folder (right-click an empty spot, **Open in
+Terminal**) and run `powershell -ExecutionPolicy Bypass -File ./onehomepage-run-setup.ps1`. No administrator rights are needed.
 
 ## 🔒 Privacy / Yksityisyys
 
